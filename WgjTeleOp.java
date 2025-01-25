@@ -29,8 +29,8 @@ public class WgjTeleOp extends OpMode {
     @Override
     public void loop() {
         // 获取左摇杆（前后移动）和右摇杆（左右旋转）的输入
-        double drive = Math.pow(gamepad1.left_stick_y,2); // 前后移动
-        double turn = Math.pow(-gamepad1.right_stick_x,2); // 左右旋转（取反修正方向）
+        double drive = Math.copySign(Math.pow(gamepad1.left_stick_y,2),gamepad1.left_stick_y); // 前后移动
+        double turn = Math.copySign(Math.pow(-gamepad1.right_stick_x,2),-gamepad1.right_stick_x); // 左右旋转（取反修正方向）
 
         // 获取 ZL 和 ZR 按键（用于左右平移）
         double strafe = 0;
